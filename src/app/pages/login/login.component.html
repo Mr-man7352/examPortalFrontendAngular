@@ -20,7 +20,7 @@
 
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>User Name</mat-label>
-                            <input required [(ngModel)]="user.username" name="username" matInput
+                            <input required [(ngModel)]="loginData.username" name="username" matInput
                                 placeholder="Enter here">
                             <mat-hint>Valid username!</mat-hint>
                         </mat-form-field>
@@ -29,14 +29,14 @@
 
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input autocomplete="new-password" required [(ngModel)]="user.password" name="password"
+                            <input autocomplete="new-password" required [(ngModel)]="loginData.password" name="password"
                                 type="password" matInput placeholder="Password">
                             <mat-hint>give your password!</mat-hint>
 
                         </mat-form-field>
 
                         <div class="container text-center">
-                            <button type="submit" mat-raised-button color="primary">Register</button>
+                            <button type="submit" mat-raised-button color="primary">Login</button>
                             <button style="margin-left: 20px;" mat-raised-button color="accent">Clear</button>
                         </div>
 
