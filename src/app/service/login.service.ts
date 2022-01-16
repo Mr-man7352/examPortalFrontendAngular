@@ -8,6 +8,11 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
   constructor(private http: HttpClient) {}
 
+  // Get Current user details
+  public getCurrentUser() {
+    return this.http.get(`${environment.baseUrl}/current-user`);
+  }
+
   // generate token
   public generateToken(loginData: any) {
     return this.http.post(`${environment.baseUrl}/generate-token`, loginData);
