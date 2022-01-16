@@ -21,6 +21,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/home/home.component';
 import { authInterceptorProviders } from './service/auth.interceptor';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UserDasboardComponent } from './pages/user/user-dasboard/user-dasboard.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { authInterceptorProviders } from './service/auth.interceptor';
     LoginComponent,
     SignupComponent,
     HomeComponent,
+    DashboardComponent,
+    UserDasboardComponent,
   ],
   imports: [
     BrowserModule,
