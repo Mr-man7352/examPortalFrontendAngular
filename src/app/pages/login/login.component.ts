@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 MatSnackBar;
 @Component({
@@ -12,7 +13,11 @@ export class LoginComponent implements OnInit {
     username: '',
     password: '',
   };
-  constructor(private snack: MatSnackBar, private loginService: LoginService) {}
+  constructor(
+    private snack: MatSnackBar,
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -43,6 +48,16 @@ export class LoginComponent implements OnInit {
           (res) => {
             console.log(res);
             this.loginService.setUser(res);
+            if (this.loginService.getUserRole() == 'ADMIN') {
+              // redirect to admin dashboard
+              this.router.navigateByUrl('/admin');
+            } else if (this.loginService.getUserRole() == 'NORMAL') {
+              // redirect to user dashboard
+              this.router.navigateByUrl('/user-dashboard');
+            } else {
+              this.loginService.logout();
+              location.reload();
+            }
           },
           (err) => {
             console.log(err);
@@ -51,6 +66,9 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         console.log(err);
+        this.snack.open('Invalid Details !!', '', {
+          duration: 3000,
+        });
       }
     );
   }
