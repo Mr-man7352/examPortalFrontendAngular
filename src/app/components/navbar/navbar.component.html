@@ -4,11 +4,11 @@
     </a>
     <span>My App</span>
     <span class="example-spacer"></span>
-    <a *ngIf="!loginService.isLoggedIn()" routerLink="/login" class="mr20" mat-raised-button color="primary">Login</a>
-    <a *ngIf="!loginService.isLoggedIn()" routerLink="/signup" mat-raised-button color="primary">Register</a>
+    <a *ngIf="!isLoggedIn" routerLink="/login" class="mr20" mat-raised-button color="primary">Login</a>
+    <a *ngIf="!isLoggedIn" routerLink="/signup" mat-raised-button color="primary">Register</a>
 
-    <a *ngIf="loginService.isLoggedIn()" routerLink="/" class="mr20" style="color: white;" mat-button
-        color="primary">{{loginService.getUser().username}}</a>
+    <a *ngIf="isLoggedIn && user" routerLink="/" class="mr20" style="color: white;" mat-button
+        color="primary">{{user.username}}</a>
 
-    <a *ngIf="loginService.isLoggedIn()" (click)="logout()" mat-raised-button color="primary">Logout</a>
+    <a *ngIf="isLoggedIn" (click)="logout()" mat-raised-button color="primary">Logout</a>
 </mat-toolbar>

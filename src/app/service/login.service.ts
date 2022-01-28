@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
   constructor(private http: HttpClient) {}
 
+  public loginStatusSubject = new Subject<boolean>();
   // Get Current user details
   public getCurrentUser() {
     return this.http.get(`${environment.baseUrl}/current-user`);

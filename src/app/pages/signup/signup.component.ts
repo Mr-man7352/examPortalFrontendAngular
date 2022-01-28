@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+// import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -10,7 +12,8 @@ import Swal from 'sweetalert2';
 export class SignupComponent implements OnInit {
   constructor(
     private userService: UserService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   public user = {
@@ -41,6 +44,7 @@ export class SignupComponent implements OnInit {
         this._snackBar.open('user registered', '', {
           duration: 3000,
         });
+        this.router.navigateByUrl('/login');
       },
       (err) => {
         console.log(err);
